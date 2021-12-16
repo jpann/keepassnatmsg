@@ -373,6 +373,12 @@ namespace KeePassNatMsg.Entry
             List<PwDatabase> listDatabases = new List<PwDatabase>();
 
             var configOpt = new ConfigOpt(_host.CustomConfig);
+
+            if (configOpt.MatchAuthorityUrl)
+            {
+                formHost = hostUri.Authority;
+            }
+
             if (configOpt.SearchInAllOpenedDatabases)
             {
                 foreach (PwDocument doc in _host.MainWindow.DocumentManager.Documents)
@@ -419,6 +425,8 @@ namespace KeePassNatMsg.Entry
                 var c = _ext.GetEntryConfig(e);
                 if (c != null)
                 {
+                    if (configOpt.MatchAuthorityUrl && c.Allow.Equals(formHost))
+                        return true;
                     if (c.Allow.Contains(formHost))
                         return true;
                     if (c.Deny.Contains(formHost))
@@ -427,7 +435,7 @@ namespace KeePassNatMsg.Entry
                         return false;
                 }
 
-                if (IsValidUrl(entryUrl, formHost))
+                if (IsValidUrl(entryUrl, formHost, configOpt.MatchAuthorityUrl))
                     return true;
 
                 if (IsValidUrl(title, formHost))
@@ -445,7 +453,7 @@ namespace KeePassNatMsg.Entry
                             return true;
                         }
 
-                        if (IsValidUrl(sfv, formHost))
+                        if (IsValidUrl(sfv, formHost, configOpt.MatchAuthorityUrl))
                             return true;
                     }
                 }
@@ -505,10 +513,10 @@ namespace KeePassNatMsg.Entry
             }
         }
 
-        private bool IsValidUrl(string url, string host)
+        private bool IsValidUrl(string url, string host, bool useAuthority = false)
         {
             Uri uri;
-            return Uri.TryCreate(url, UriKind.Absolute, out uri) && _allowedSchemes.Contains(uri.Scheme) && host.EndsWith(uri.Host);
+            return Uri.TryCreate(url, UriKind.Absolute, out uri) && _allowedSchemes.Contains(uri.Scheme) && host.EndsWith(useAuthority == true ? uri.Authority : uri.Host);
         }
 
         private static SearchParameters MakeSearchParameters(bool excludeExpired)

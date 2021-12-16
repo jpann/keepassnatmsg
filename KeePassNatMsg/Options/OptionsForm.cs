@@ -55,6 +55,8 @@ namespace KeePassNatMsg.Options
             chkSearchUrls.Checked = _config.SearchUrls;
             chkUseKpxcSettingsKey.Checked = _config.UseKeePassXcSettings;
 
+            matchAuthorityUrl.Checked = _config.MatchAuthorityUrl;
+
             this.returnStringFieldsCheckbox_CheckedChanged(null, EventArgs.Empty);
 
             InitDatabasesDropdown();
@@ -83,6 +85,8 @@ namespace KeePassNatMsg.Options
             _config.OverrideKeePassXcVersion = txtKPXCVerOverride.Text;
             _config.ConnectionDatabaseHash = (comboBoxDatabases.SelectedItem as DatabaseItem) == null ? null : (comboBoxDatabases.SelectedItem as DatabaseItem).DbHash;
             _config.SearchUrls = chkSearchUrls.Checked;
+
+            _config.MatchAuthorityUrl = matchAuthorityUrl.Checked;
 
             if (_config.UseKeePassXcSettings != chkUseKpxcSettingsKey.Checked)
             {

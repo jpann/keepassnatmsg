@@ -32,6 +32,7 @@
             this.okButton = new System.Windows.Forms.Button();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.matchAuthorityUrl = new System.Windows.Forms.CheckBox();
             this.lblVersion = new System.Windows.Forms.Label();
             this.lblProxyVersion = new System.Windows.Forms.Label();
             this.btnInstallNativeMessaging = new System.Windows.Forms.Button();
@@ -120,6 +121,7 @@
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.matchAuthorityUrl);
             this.tabPage1.Controls.Add(this.lblVersion);
             this.tabPage1.Controls.Add(this.lblProxyVersion);
             this.tabPage1.Controls.Add(this.btnInstallNativeMessaging);
@@ -139,6 +141,17 @@
             this.tabPage1.Text = "General";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
+            // matchAuthorityUrl
+            // 
+            this.matchAuthorityUrl.AutoSize = true;
+            this.matchAuthorityUrl.Location = new System.Drawing.Point(7, 195);
+            this.matchAuthorityUrl.Name = "matchAuthorityUrl";
+            this.matchAuthorityUrl.Size = new System.Drawing.Size(266, 43);
+            this.matchAuthorityUrl.TabIndex = 26;
+            this.matchAuthorityUrl.Text = "Match using authority URL\r\nonly entries with the same host name and port \r\n(domai" +
+    "n.com:8080, host.domain:8081) are returned";
+            this.matchAuthorityUrl.UseVisualStyleBackColor = true;
+            // 
             // lblVersion
             // 
             this.lblVersion.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
@@ -151,7 +164,7 @@
             // 
             // lblProxyVersion
             // 
-            this.lblProxyVersion.Location = new System.Drawing.Point(14, 236);
+            this.lblProxyVersion.Location = new System.Drawing.Point(14, 271);
             this.lblProxyVersion.Name = "lblProxyVersion";
             this.lblProxyVersion.Size = new System.Drawing.Size(372, 129);
             this.lblProxyVersion.TabIndex = 22;
@@ -161,7 +174,7 @@
             // 
             this.btnInstallNativeMessaging.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnInstallNativeMessaging.Location = new System.Drawing.Point(14, 368);
+            this.btnInstallNativeMessaging.Location = new System.Drawing.Point(14, 403);
             this.btnInstallNativeMessaging.Name = "btnInstallNativeMessaging";
             this.btnInstallNativeMessaging.Size = new System.Drawing.Size(372, 28);
             this.btnInstallNativeMessaging.TabIndex = 20;
@@ -217,7 +230,7 @@
             this.removePermissionsButton.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.removePermissionsButton.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
-            this.removePermissionsButton.Location = new System.Drawing.Point(14, 205);
+            this.removePermissionsButton.Location = new System.Drawing.Point(14, 240);
             this.removePermissionsButton.Name = "removePermissionsButton";
             this.removePermissionsButton.Size = new System.Drawing.Size(372, 28);
             this.removePermissionsButton.TabIndex = 16;
@@ -612,5 +625,6 @@
         private System.Windows.Forms.CheckBox chkUseKpxcSettingsKey;
         private System.Windows.Forms.Label lblVersion;
         private System.Windows.Forms.Button btnMigrateSettings;
+        private System.Windows.Forms.CheckBox matchAuthorityUrl;
     }
 }

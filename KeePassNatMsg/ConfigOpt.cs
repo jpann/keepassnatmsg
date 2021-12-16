@@ -20,8 +20,9 @@ namespace KeePassNatMsg
 		const string ConnectionDatabaseHashKey = "KeePassHttp_ConnectionDatabaseHash";
         const string SearchUrlsKey = "KeePassHttp_SearchUrls";
         const string UseKeePassXcSettingsKey = "KeePassNatMsg_UseKpxcSettings";
+        const string MatchAuthorityUrlKey = "KeePassNatMsg_MatchAuthorityUrl";
 
-		public ConfigOpt(AceCustomConfig config)
+        public ConfigOpt(AceCustomConfig config)
         {
             _config = config;
         }
@@ -131,6 +132,12 @@ namespace KeePassNatMsg
             {
                 _config.SetBool(UseKeePassXcSettingsKey, value);
             }
+        }
+
+        public bool MatchAuthorityUrl
+        {
+            get { return _config.GetBool(MatchAuthorityUrlKey, false); }
+            set { _config.SetBool(MatchAuthorityUrlKey, value); }
         }
     }
 }
